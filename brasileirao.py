@@ -196,7 +196,22 @@ def datas_de_jogos_de_um_time(dados, nome_time):
 Ela devolve um dicionário, com quantos gols cada time fez.
 '''
 def dicionario_de_gols(dados):
-    pass
+
+   dic_gols = {}
+
+   for id_time in dados["equipes"]:
+
+      gols = 0
+      jogos = ids_de_jogos_de_um_time(dados, id_time)
+      for id_jogo in jogos:
+         if id_time == dados["fases"]["2700"]["jogos"]["id"][id_jogo]["time1"]:
+            gols += int(dados["fases"]["2700"]["jogos"]["id"][id_jogo]["placar1"])
+         elif id_time == dados["fases"]["2700"]["jogos"]["id"][id_jogo]["time2"]:
+            gols += int(dados["fases"]["2700"]["jogos"]["id"][id_jogo]["placar2"])
+      
+      dic_gols.update({id_time:gols})
+   
+   return dic_gols
 
 '''
 11. A próxima função recebe apenas o dicionário dos dados do brasileirão.
@@ -290,3 +305,4 @@ dados = pega_dados()
 #print(busca_imprecisa_por_nome_de_time(dados, "Bot"))
 #print(ids_de_jogos_de_um_time(dados, "695"))
 #print(datas_de_jogos_de_um_time(dados, "Flamengo"))
+#print(dicionario_de_gols(dados))
