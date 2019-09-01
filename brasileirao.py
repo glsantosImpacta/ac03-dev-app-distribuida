@@ -130,7 +130,26 @@ Sua resposta deve ser uma lista de ids de times que "batem"
 com a pesquisa (e pode ser vazia, se não achar ninguém).
 '''
 def busca_imprecisa_por_nome_de_time(dados, nome_time):
-    pass
+
+   resultados = []
+
+   for i in dados["equipes"]:
+      
+      nome = dados["equipes"][i]["nome"]
+      nome_comum = dados["equipes"][i]["nome-comum"]
+      nome_slug = dados["equipes"][i]["nome-slug"]
+      sigla = dados["equipes"][i]["sigla"]
+
+      if nome.find(nome_time) != -1:
+         resultados.append(i)
+      elif nome_comum.find(nome_time) != -1:
+         resultados.append(i)
+      elif nome_slug.find(nome_time) != -1:
+         resultados.append(i)
+      elif sigla.find(nome_time) != -1:
+         resultados.append(i)
+
+   return resultados
 
 '''
 8. Agora, a ideia é receber a id de um time e retornar as
@@ -247,3 +266,5 @@ dados = pega_dados()
 #print(nome_do_time(dados, "695"))
 #print(nomes_dos_times_de_um_jogo(dados, "102099"))
 #print(id_do_time(dados, "Chapecoense"))
+
+#print(busca_imprecisa_por_nome_de_time(dados, "Bot"))
