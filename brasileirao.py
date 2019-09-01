@@ -156,7 +156,17 @@ def busca_imprecisa_por_nome_de_time(dados, nome_time):
 ids de todos os jogos em que ele participou.
 '''
 def ids_de_jogos_de_um_time(dados, time_id):
-    pass
+   
+   jogos = []
+
+   for id_jogo in dados["fases"]["2700"]["jogos"]["id"]:
+
+      if time_id == dados["fases"]["2700"]["jogos"]["id"][id_jogo]["time1"]:
+         jogos.append(id_jogo)
+      elif time_id == dados["fases"]["2700"]["jogos"]["id"][id_jogo]["time2"]:
+         jogos.append(id_jogo)
+   
+   return jogos
 
 '''
 9. Usando as ids dos jogos em que um time participou, podemos descobrir
@@ -266,5 +276,5 @@ dados = pega_dados()
 #print(nome_do_time(dados, "695"))
 #print(nomes_dos_times_de_um_jogo(dados, "102099"))
 #print(id_do_time(dados, "Chapecoense"))
-
 #print(busca_imprecisa_por_nome_de_time(dados, "Bot"))
+#print(ids_de_jogos_de_um_time(dados, "695"))
