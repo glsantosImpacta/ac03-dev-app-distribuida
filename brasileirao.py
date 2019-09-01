@@ -80,14 +80,25 @@ def ids_dos_times_de_um_jogo(dados, id_jogo):
 4. A próxima função recebe a id_numerica de um time e deve retornar o seu 'nome-comum'.
 '''
 def nome_do_time(dados, id_time):
-   pass
+   
+   time = dados["equipes"][id_time]["nome-comum"]
+   return time
 
 '''
 5. A próxima função "cruza" as duas anteriores. Recebe uma id de um jogo
 e retorna os "nome-comum" dos dois times.
 '''
 def nomes_dos_times_de_um_jogo(dados, id_jogo):
-   pass
+
+   id_time_a = dados["fases"]["2700"]["jogos"]["id"][id_jogo]["time1"]
+   id_time_b = dados["fases"]["2700"]["jogos"]["id"][id_jogo]["time2"]
+
+   time_a = dados["equipes"][id_time_a]["nome-comum"]
+   time_b = dados["equipes"][id_time_b]["nome-comum"]
+
+   times = [time_a, time_b]
+   
+   return times
 
 '''
 6. Façamos agora a busca "ao contrário". Conhecendo
@@ -96,7 +107,14 @@ o nome-comum de um time, queremos saber a sua id.
 Se o nome comum não existir, retorne 'não encontrado'.
 '''
 def id_do_time(dados, nome_time):
-    pass
+   
+   for i in dados["equipes"]:
+      
+      if nome_time in dados["equipes"][i]["nome-comum"]:
+
+         return i
+
+   return "não encontrado"
 
 '''
 7. Agora, façamos uma busca "fuzzy". Queremos procurar por 'Fla'
@@ -225,4 +243,7 @@ def pega_dados():
 dados = pega_dados()
 #print(datas_de_jogo(dados))
 #print(data_de_um_jogo(dados, "102278"))
-print(ids_dos_times_de_um_jogo(dados, "102109"))
+#print(ids_dos_times_de_um_jogo(dados, "102109"))
+#print(nome_do_time(dados, "695"))
+#print(nomes_dos_times_de_um_jogo(dados, "102099"))
+#print(id_do_time(dados, "Chapecoense"))
