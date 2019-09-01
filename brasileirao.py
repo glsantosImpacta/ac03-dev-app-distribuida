@@ -177,7 +177,18 @@ Note que essa função recebe o nome-comum do time, não a sua id.
 Ela retorna uma lista das datas em que o time jogou.
 '''
 def datas_de_jogos_de_um_time(dados, nome_time):
-    pass
+   
+   datas = []
+
+   id_time = id_do_time(dados, nome_time)
+   jogos_time = ids_de_jogos_de_um_time(dados, id_time)
+   
+   for id_jogo in jogos_time:
+
+      dt_jogo = data_de_um_jogo(dados, id_jogo)
+      datas.append(dt_jogo)
+
+   return datas
 
 '''
 10. A próxima função recebe apenas o dicionário dos dados do brasileirão.
@@ -278,3 +289,4 @@ dados = pega_dados()
 #print(id_do_time(dados, "Chapecoense"))
 #print(busca_imprecisa_por_nome_de_time(dados, "Bot"))
 #print(ids_de_jogos_de_um_time(dados, "695"))
+#print(datas_de_jogos_de_um_time(dados, "Flamengo"))
