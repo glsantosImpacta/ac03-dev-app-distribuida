@@ -219,8 +219,20 @@ def dicionario_de_gols(dados):
 Ela devolve a id do time que fez mais gols no campeonato.
 '''
 def time_que_fez_mais_gols(dados):
-    pass
+ 
+   id_maior_time = 0
+   maior_gol = 0
 
+   dic_gols = dicionario_de_gols(dados)
+   
+   for id_time in dic_gols:
+      gol_atual = dic_gols[id_time]
+      if gol_atual > maior_gol:
+         maior_gol = gol_atual
+         id_maior_time = id_time
+   
+   return id_maior_time
+   
 '''
 12. A próxima função recebe apenas o dicionário dos dados do brasileirão
 
@@ -306,3 +318,5 @@ dados = pega_dados()
 #print(ids_de_jogos_de_um_time(dados, "695"))
 #print(datas_de_jogos_de_um_time(dados, "Flamengo"))
 #print(dicionario_de_gols(dados))
+
+print(time_que_fez_mais_gols(dados))
