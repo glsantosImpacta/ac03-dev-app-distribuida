@@ -243,7 +243,23 @@ Ou seja, as chaves são ids de estádios e os valores associados,
 o número de vezes que um jogo ocorreu no estádio.
 '''
 def dicionario_id_estadio_e_nro_jogos(dados):
-    pass
+
+   estadios = []
+   dic_estadio_nro_jogos = {}
+
+   for id_jogo in dados["fases"]["2700"]["jogos"]["id"]:
+      
+      estadio_id = dados["fases"]["2700"]["jogos"]["id"][id_jogo]["estadio_id"]
+      if estadio_id in estadios:
+
+         nro_jogo = dic_estadio_nro_jogos.get(estadio_id)
+         nro_jogo+=1
+         dic_estadio_nro_jogos.update({estadio_id:nro_jogo})
+      else:
+         estadios.append(estadio_id)
+         dic_estadio_nro_jogos.update({estadio_id:1})
+
+   return dic_estadio_nro_jogos
 
 '''
 13. A próxima função recebe apenas o dicionário dos dados do brasileirão
@@ -318,5 +334,6 @@ dados = pega_dados()
 #print(ids_de_jogos_de_um_time(dados, "695"))
 #print(datas_de_jogos_de_um_time(dados, "Flamengo"))
 #print(dicionario_de_gols(dados))
+#print(time_que_fez_mais_gols(dados))
 
-print(time_que_fez_mais_gols(dados))
+print(dicionario_id_estadio_e_nro_jogos(dados))
