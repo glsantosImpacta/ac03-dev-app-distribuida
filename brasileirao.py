@@ -335,5 +335,4 @@ dados = pega_dados()
 #print(datas_de_jogos_de_um_time(dados, "Flamengo"))
 #print(dicionario_de_gols(dados))
 #print(time_que_fez_mais_gols(dados))
-
-print(dicionario_id_estadio_e_nro_jogos(dados))
+#print(dicionario_id_estadio_e_nro_jogos(dados))
